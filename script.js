@@ -13,7 +13,8 @@ let answersEl = document.querySelector("#answers");
 let questions = {
     question1: {
         q: "Commonly used data types DO NOT include:",
-        a: ["strings", "booleans", "alerts", "numbers"]
+        a: ["strings", "booleans", "alerts", "numbers"],
+        win: "alerts";
     },
     question2: {
         q: "The condition in an if/else statement is enclosed within ___.",
@@ -37,6 +38,7 @@ function countDown() {
     }, 1000);
 }
 
+
 //display question when user clicks the button
 function askQuestion() {
     starterEl.classList.add("hide");
@@ -44,16 +46,22 @@ function askQuestion() {
     let list = questions.question1.a;
     questionEl.textContent = questions.question1.q;
     for (let i = 0; i < list.length; i++) {
-        console.log("listitem: " + list[i]);
+        // console.log("listitem: " + list[i]);
         let answerButtonEl = document.createElement("button");
         answerButtonEl.textContent = list[i];
         let answerItemEl = document.createElement("li");
         answerItemEl.appendChild(answerButtonEl);
         document.querySelector("ul").appendChild(answerItemEl);
     }
-
-
 }
+
+starterEl.addEventListener("click", function(){
+    console.log(event.target);
+    if(event.target.matches("button") === true) {
+       countDown();
+       askQuestion();
+    }
+})
 
 //verify the answer: show the result
 //if the answer is incorrect substract 10 seconds from the remaining countdown
