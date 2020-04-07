@@ -20,6 +20,21 @@ let questions =
         question: "The condition in an if/else statement is enclosed within ___.",
         options: ["quotes", "curly brackets", "parentheses", "square brackets"],
         answer: 2
+    },
+    {
+        question: "Arrays in JavaScripte can be ised to store ___.",
+        options: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        answer: 3
+    },
+    {
+        question: "String values must be enclosed within ___ when being assigned to variables.",
+        options: ["commas", "curly brackets", "quotes", "parentheses"],
+        answer: 2
+    },
+    {
+        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+        options: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+        answer: 3
     }
     ]
 
@@ -39,7 +54,7 @@ function countDown() {
 let index = 0;
 //display question when user clicks the button
 function askQuestion() {
-    console.log();
+    console.log("questionIndex", questions[index]);
     let options = questions[index].options;
     questionEl.textContent = questions[index].question;
     let optionLi = document.querySelectorAll(".optionLi");
