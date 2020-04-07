@@ -1,6 +1,6 @@
 //DOM dependencies
 let timerEl = document.querySelector("#counter");
-let starterEl = document.querySelector("#welcome-page");
+let starterEl = document.querySelector("#starter");
 let questionWrapperEl = document.querySelector("#questionWrapper");
 let questionEl = document.querySelector("#question");
 let answersEl = document.querySelector("#answers");
@@ -14,7 +14,7 @@ let questions = {
     question1: {
         q: "Commonly used data types DO NOT include:",
         a: ["strings", "booleans", "alerts", "numbers"],
-        win: "alerts";
+        win: "alerts"
     },
     question2: {
         q: "The condition in an if/else statement is enclosed within ___.",
@@ -55,15 +55,15 @@ function askQuestion() {
     }
 }
 
-starterEl.addEventListener("click", function(){
-    console.log(event.target);
-    if(event.target.matches("button") === true) {
-       countDown();
-       askQuestion();
-    }
-})
+document.querySelector("#start").addEventListener("click", function () {
+    countDown();
+    askQuestion();
+}
+)
 
 //verify the answer: show the result
+
+
 //if the answer is incorrect substract 10 seconds from the remaining countdown
 //show final page when all questions are answered / time is up
 //include the score equals the remaining time on the final page
