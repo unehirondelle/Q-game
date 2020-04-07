@@ -10,21 +10,19 @@ let answersEl = document.querySelector("#answers");
 
 
 //questions
-let questions = {
-    question1: {
-        q: "Commonly used data types DO NOT include:",
-        a: ["strings", "booleans", "alerts", "numbers"],
-        win: "alerts"
+let questions =
+    [{
+        question: "Commonly used data types DO NOT include:",
+        options: ["strings", "booleans", "alerts", "numbers"],
+        answer: 2
     },
-    question2: {
-        q: "The condition in an if/else statement is enclosed within ___.",
-        a: ["quotes", "curly brackets", "parentheses", "square brackets"]
-    },
-    // {q: "", a: []},
-    // {q: "", a: []},
-    // {q: "", a: []},
-}
-console.log(questions.question1.a[0]);
+    {
+        question: "The condition in an if/else statement is enclosed within ___.",
+        options: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        answer: 2
+    }
+    ]
+
 //start countdown when user clicks Start Quiz button
 function countDown() {
     let count = 75;
@@ -38,24 +36,34 @@ function countDown() {
     }, 1000);
 }
 
-
+let index = 0;
 //display question when user clicks the button
 function askQuestion() {
-    starterEl.classList.add("hide");
-    questionWrapperEl.classList.remove("hide");
-    let list = questions.question1.a;
-    questionEl.textContent = questions.question1.q;
-    for (let i = 0; i < list.length; i++) {
+    console.log();
+    let options = questions[index].options;
+    questionEl.textContent = questions[index].question;
+    let optionLi = document.querySelectorAll(".optionLi");
+    for (let j = 0; j < optionLi.length; j++){
+        optionLi[j].parentNode.removeChild(optionLi[j]);
+    }
+    
+    for (let i = 0; i < options.length; i++) {
         // console.log("listitem: " + list[i]);
         let answerButtonEl = document.createElement("button");
-        answerButtonEl.textContent = list[i];
+        answerButtonEl.textContent = (i + 1) + ". " + options[i];
+        answerButtonEl.classList.add("option");
+        answerButtonEl.setAttribute("optionIndex", i)
         let answerItemEl = document.createElement("li");
+        answerItemEl.classList.add("optionLi");
         answerItemEl.appendChild(answerButtonEl);
         document.querySelector("ul").appendChild(answerItemEl);
     }
+    addEventListenerToOptions();
 }
 
 document.querySelector("#start").addEventListener("click", function () {
+    starterEl.classList.add("hide");
+    questionWrapperEl.classList.remove("hide");
     countDown();
     askQuestion();
 }
@@ -63,6 +71,24 @@ document.querySelector("#start").addEventListener("click", function () {
 
 //verify the answer: show the result
 
+function addEventListenerToOptions() {
+    let optionNodes = document.querySelectorAll(".option");
+    for (let i = 0; i < optionNodes.length; i++) {
+        optionNodes[i].addEventListener("click", function () {
+            const optionIndex = event.target.getAttribute("optionIndex");
+            console.log("selected option: ", optionIndex, questions[index]);
+            if (parseInt(optionIndex) === questions[index].answer) {                
+                console.log("Correct answer");
+                index++;
+                askQuestion();
+            } else {
+                console.log("OptionIndex", optionIndex, questions[index].answer);
+                console.log("Incorrect answer");
+            }
+        })
+    }
+
+}
 
 //if the answer is incorrect substract 10 seconds from the remaining countdown
 //show final page when all questions are answered / time is up
