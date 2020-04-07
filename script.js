@@ -58,10 +58,10 @@ function askQuestion() {
     let options = questions[index].options;
     questionEl.textContent = questions[index].question;
     let optionLi = document.querySelectorAll(".optionLi");
-    for (let j = 0; j < optionLi.length; j++){
+    for (let j = 0; j < optionLi.length; j++) {
         optionLi[j].parentNode.removeChild(optionLi[j]);
     }
-    
+
     for (let i = 0; i < options.length; i++) {
         // console.log("listitem: " + list[i]);
         let answerButtonEl = document.createElement("button");
@@ -92,10 +92,14 @@ function addEventListenerToOptions() {
         optionNodes[i].addEventListener("click", function () {
             const optionIndex = event.target.getAttribute("optionIndex");
             console.log("selected option: ", optionIndex, questions[index]);
-            if (parseInt(optionIndex) === questions[index].answer) {                
+            if (parseInt(optionIndex) === questions[index].answer) {
                 console.log("Correct answer");
                 index++;
-                askQuestion();
+                if (questions[index]) {
+                    askQuestion();
+                } else {
+                    alert("No more questions");
+                }
             } else {
                 console.log("OptionIndex", optionIndex, questions[index].answer);
                 console.log("Incorrect answer");
