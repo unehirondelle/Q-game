@@ -4,9 +4,9 @@ let starterEl = document.querySelector("#welcome-page");
 let questionWrapperEl = document.querySelector("#questionWrapper");
 let questionEl = document.querySelector("#question");
 let answersEl = document.querySelector("#answers");
-let answerItemEl = document.querySelector("#answers > li > button");
-//let answerItemEl = document.querySelectorAll("#answers" > "li");
-console.log(`answerItemEl: ${answerItemEl}`);
+// let answerItemEl = document.querySelector("#answers > li > button");
+// //let answerItemEl = document.querySelectorAll("#answers" > "li");
+// console.log(`answerItemEl: ${answerItemEl}`);
 
 
 //questions
@@ -39,16 +39,18 @@ function countDown() {
 
 //display question when user clicks the button
 function askQuestion() {
-starterEl.classList.add("hide");
-questionWrapperEl.classList.remove("hide");
-let list = questions.question1.a;
-questionEl.textContent = questions.question1.q;
-for (let i = 0; i < list.length; i++){
-    console.log("listitem: " + list[i]);
-    answerItemEl.textContent = list[i];
-    console.log(answerItemEl);
-    
-}
+    starterEl.classList.add("hide");
+    questionWrapperEl.classList.remove("hide");
+    let list = questions.question1.a;
+    questionEl.textContent = questions.question1.q;
+    for (let i = 0; i < list.length; i++) {
+        console.log("listitem: " + list[i]);
+        let answerButtonEl = document.createElement("button");
+        answerButtonEl.textContent = list[i];
+        let answerItemEl = document.createElement("li");
+        answerItemEl.appendChild(answerButtonEl);
+        document.querySelector("ul").appendChild(answerItemEl);
+    }
 
 
 }
