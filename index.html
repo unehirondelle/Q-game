@@ -18,17 +18,17 @@
             <h1>Coding Quiz Challenge</h1>
             <h3>Try to answer the following code-related questions within the time limit.
                 Keep on mind that incorrect answers will penalize yout score/time by ten seconds!</h3>
-            <button id="start" onclick="countDown()">Start Quiz</button>
+            <button id="start" onclick="askQuestion()">Start Quiz</button>
         </div>
-        <div class = "hide" id="question">
-           <!--  <h1></h1>
-            <ol>
-                <li>strings</li>
-                <li>booleans</li>
-                <li>alerts</li>
-                <li>numbers</li>
-            </ol>
-        </div>
+        <div class="hide" id="questionWrapper">
+            <h1 id="question"></h1>
+            <ul class="no-bullets" id="answers">
+                <li id="0"><button></button></li>
+                <li id="1"><button></button></li>
+                <li id="2"><button></button></li>
+                <li id="3"><button></button></li>
+                </ol>
+                <!-- </div>
         <div>
             <h1></h1>
             <ol>
@@ -67,7 +67,7 @@
                 <li>console.log</li>
             </ol> -->
         </div>
-        <div>
+        <div class="hide">
             <h1>All done!</h1>
             <h2>Your final score is <span></span></h2>
             <h2>Enter initials: <input> <button>Submit</button></h2>
