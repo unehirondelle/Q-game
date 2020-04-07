@@ -11,14 +11,14 @@
 <body>
     <header>
         <a>View Highscores</a>
-        <div>Time: <span id="counter"></span></div>
+        <div>Time: <span id="counter">0</span></div>
     </header>
     <main>
         <div id="welcome-page">
             <h1>Coding Quiz Challenge</h1>
             <h3>Try to answer the following code-related questions within the time limit.
                 Keep on mind that incorrect answers will penalize yout score/time by ten seconds!</h3>
-            <button id="start">Start Quiz</button>
+            <button id="start" onclick="countDown()">Start Quiz</button>
         </div>
         <div>
             <h1>Commonly used data types DO NOT include:</h1>
